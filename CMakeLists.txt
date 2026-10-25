@@ -29,6 +29,10 @@ endif()
 
 project(gearmulator VERSION 2.2.28)
 
+if(MSVC)
+    add_compile_options(/utf-8)
+endif()
+
 include(source/cmake/base.cmake)
 include(CTest)
 
