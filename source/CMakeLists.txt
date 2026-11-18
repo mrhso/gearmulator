@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 3.15)
 
-option(${CMAKE_PROJECT_NAME}_SYNTH_OSIRUS "Build Osirus" on)
-option(${CMAKE_PROJECT_NAME}_SYNTH_OSTIRUS "Build OsTIrus" on)
-option(${CMAKE_PROJECT_NAME}_SYNTH_VAVRA "Build Vavra" on)
-option(${CMAKE_PROJECT_NAME}_SYNTH_XENIA "Build Xenia" on)
-option(${CMAKE_PROJECT_NAME}_SYNTH_NODALRED2X "Build NodalRed2x" on)
-option(${CMAKE_PROJECT_NAME}_SYNTH_JE8086 "Build JE-8086" on)
+option(${CMAKE_PROJECT_NAME}_SYNTH_OSIRUS "Build Osirus" off)
+option(${CMAKE_PROJECT_NAME}_SYNTH_OSTIRUS "Build OsTIrus" off)
+option(${CMAKE_PROJECT_NAME}_SYNTH_VAVRA "Build Vavra" off)
+option(${CMAKE_PROJECT_NAME}_SYNTH_XENIA "Build Xenia" off)
+option(${CMAKE_PROJECT_NAME}_SYNTH_NODALRED2X "Build NodalRed2x" off)
+option(${CMAKE_PROJECT_NAME}_SYNTH_JE8086 "Build JE-8086" off)
 option(${CMAKE_PROJECT_NAME}_SYNTH_88EMU "Build 88Emu" on)
-option(${CMAKE_PROJECT_NAME}_COMPONENT_DSPBRIDGE "Build the DSPBridge server" on)
+option(${CMAKE_PROJECT_NAME}_COMPONENT_DSPBRIDGE "Build the DSPBridge server" off)
 
 # ----------------- Add our cmake scripts to IDE
 
@@ -83,7 +83,7 @@ add_subdirectory(ronaldo)
 
 # ----------------- Installer
 
-option(${CMAKE_PROJECT_NAME}_BUILD_INSTALLER "Build TUS Plugin Manager" on)
+option(${CMAKE_PROJECT_NAME}_BUILD_INSTALLER "Build TUS Plugin Manager" off)
 if(${CMAKE_PROJECT_NAME}_BUILD_INSTALLER AND ${CMAKE_PROJECT_NAME}_BUILD_JUCEPLUGIN)
 	add_subdirectory(framework/tools/installer)
 endif()

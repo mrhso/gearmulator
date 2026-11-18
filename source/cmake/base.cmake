@@ -8,6 +8,7 @@ set(TUS_BIN_DIR "${CMAKE_SOURCE_DIR}/bin")
 set(TUS_CAN_RUN_BUILT_BINARIES ON)
 
 if(MSVC)
+	add_compile_options(/utf-8)
 	# https://cmake.org/cmake/help/latest/variable/CMAKE_MSVC_RUNTIME_LIBRARY.html#variable:CMAKE_MSVC_RUNTIME_LIBRARY
 	cmake_policy(SET CMP0091 NEW)
 	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
