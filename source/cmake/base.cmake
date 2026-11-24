@@ -7,7 +7,13 @@ endif()
 set(TUS_BIN_DIR "${CMAKE_SOURCE_DIR}/bin")
 set(TUS_CAN_RUN_BUILT_BINARIES ON)
 
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+	set(TUS_BIN_DIR "${CMAKE_SOURCE_DIR}/bin-gcc")
+endif()
+
 if(MSVC)
+	set(TUS_BIN_DIR "${CMAKE_SOURCE_DIR}/bin-msvc")
+	add_compile_options(/utf-8)
 	# https://cmake.org/cmake/help/latest/variable/CMAKE_MSVC_RUNTIME_LIBRARY.html#variable:CMAKE_MSVC_RUNTIME_LIBRARY
 	cmake_policy(SET CMP0091 NEW)
 	set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
@@ -38,7 +44,7 @@ if(MSVC)
 
 	if(CMAKE_CXX_COMPILER_ARCHITECTURE_ID STREQUAL "ARM64")
 		# usually built next to an x64 build of the same tree, whose plugins and tools it would overwrite
-		set(TUS_BIN_DIR "${CMAKE_SOURCE_DIR}/bin/arm64")
+		set(TUS_BIN_DIR "${CMAKE_SOURCE_DIR}/bin-msvc/arm64")
 
 		# arm64_neon.h, which <intrin.h> pulls in, otherwise defines short macros such as mvn(src) that rewrite
 		# every asmjit Assembler::mvn() call in the JITs into neon_not()
